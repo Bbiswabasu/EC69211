@@ -13,7 +13,14 @@ Write python modular functions to perform the following task. All functions must
 # Tech
 
 - Python 3
-- Matplotlib Library
+- Matplotlib Library (to display the images)
+
+# How to run
+
+- Open terminal and run `python3 experiment.py`
+- Choose one of the options (1,2 or 3) based on the function to be tested
+- Enter the input file path. All input images are stored under `input/` directory, so enter file path as `input/<filename>.bmp`
+- If you are asked to enter path of output file, enter `output/<filename>.bmp`
 
 # Functions
 
@@ -34,13 +41,13 @@ Write python modular functions to perform the following task. All functions must
 ## manipulate_channel(filename,remove_color)
 - Takes the the name of the .bmp file to be read with the filename parameter
 - Takes the remove_color paramter of the color that will be masked in the RGB channel
-- remove_color - 'r' = R , 'g' = G , 'b' = B
+- remove_color - 'r' = Red , 'g' = Green , 'b' = Blue
 
 ## bytes_to_int(b)
-- Converts the given binary number to integer number
+- Converts the given bytearray to integer
 
 ## int_to_bytes
-- Converts the given integer number to a binary number
+- Converts the given integer to bytearray
 
 
 
