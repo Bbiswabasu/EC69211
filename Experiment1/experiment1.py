@@ -171,8 +171,9 @@ elif ch == '2':
     bmp_header, pixel_array = read_bmp(output_filename)
     display_bmp(bmp_header, pixel_array)
 else:
-    filename = input("Enter path of file with which you want to save (*.bmp): ")
+    filename = input("Enter path of file to be read (*.bmp): ")
     remove_color = input("Enter color to be removed (r,g,b): ")
     manipulate_channel(filename, remove_color)
     bmp_header, pixel_array = read_bmp('output/'+filename.split('/')[-1][:-4]+'_without_'+remove_color+'.bmp')
+    print('Manipulated image saved as '+'output/'+filename.split('/')[-1][:-4]+'_without_'+remove_color+'.bmp')
     display_bmp(bmp_header, pixel_array)
