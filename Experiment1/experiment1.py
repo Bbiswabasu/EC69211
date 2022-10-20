@@ -27,6 +27,9 @@ def read_bmp(filename):
 
     # read the bmp header
     bmp_header['type'] = bmp_data.read(2).decode()
+    if bmp_header['type'] != 'BM':
+        print("Given file is not .bmp file")
+        return
     bmp_header['size_bytes'] = bytes_to_int(bmp_data.read(4))
     bmp_header['reserved_1'] = bytes_to_int(bmp_data.read(2))
     bmp_header['reserved_2'] = bytes_to_int(bmp_data.read(2))
@@ -127,8 +130,10 @@ def manipulate_channel(filename, remove_color):
         mask = 0x0000ffff
     elif remove_color == 'g':
         mask = 0x00ff00ff
-    else:
+    elif remove_color == 'b':
         mask = 0x00ffff00
+    else:
+        mask = -1
 
     color_index = dict()
     for i in range(bmp_header['num_colors']):
@@ -141,7 +146,7 @@ def manipulate_channel(filename, remove_color):
                 pixel_array[i][j][0] = 0
             elif remove_color == 'g':
                 pixel_array[i][j][1] = 0
-            else:
+            elif remove_color == 'b':
                 pixel_array[i][j][2] = 0
 
     write_bmp('output/'+filename.split('/')[-1][:-4]+'_without_'+remove_color+'.bmp', bmp_header, pixel_array)
